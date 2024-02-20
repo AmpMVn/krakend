@@ -1,0 +1,35 @@
+{
+  "default_hosts": [],
+  "ms_user_host": "http://rentsoft_ms_user_keycloak:8080",
+  "ms_article_host": "http://rentsoft_ms_article_nginx",
+  "ms_online_booking_host": "http://rentsoft_ms_online_booking_nginx",
+  "ms_invoice_host": "http://rentsoft_ms_invoice_nginx",
+  "ms_payment_host": "http://rentsoft_ms_payment_nginx",
+  "ms_communication_host": "http://rentsoft_ms_communication_nginx",
+  "extra_config": {
+    "telemetry/metrics": {
+      "collection_time": "30s",
+      "listen_address":":8090"
+    },
+    "telemetry/influx":{
+      "address":"http://influxdb:8086",
+      "ttl":"25s"
+    },
+    "telemetry/logging": {
+      "level":  "DEBUG",
+      "prefix": "[KRAKEND]",
+      "syslog": false,
+      "stdout": true
+    },
+    "security/cors": {
+      "allow_origins": [
+        "*"
+      ],
+      "allow_methods": [
+        "GET",
+        "POST",
+        "PATCH"
+      ]
+    }
+  }
+}

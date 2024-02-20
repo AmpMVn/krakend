@@ -1,0 +1,31 @@
+{
+  "default_hosts": [],
+  "ms_user_host": "https://user.ms.rentsoft.de",
+  "ms_article_host": "https://article.ms.rentsoft.de",
+  "ms_online_booking_host": "https://ob.ms.rentsoft.de",
+  "ms_invoice_host": "https://api.invoice.ms.rentsoft.de",
+  "ms_payment_host": "https://payment.ms.rentsoft.de",
+  "ms_communication_host": "https://communication.ms.rentsoft.de",
+  "extra_config": {
+    "telemetry/metrics": {
+      "collection_time": "30s",
+      "listen_address":":8090"
+    },
+    "telemetry/logging": {
+      "level":  "ERROR",
+      "prefix": "[KRAKEND]",
+      "syslog": false,
+      "stdout": true
+    },
+    "security/cors": {
+      "allow_origins": [
+        "*"
+      ],
+      "allow_methods": [
+        "GET",
+        "POST",
+        "PATCH"
+      ]
+    }
+  }
+}

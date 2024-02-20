@@ -1,0 +1,66 @@
+version: "3.9"
+services:
+  grafana:
+    container_name: rentsoft_api_gateway_grafana
+    build:
+      dockerfile: Dockerfile
+      context: ./grafana
+    environment:
+      VIRTUAL_HOST: ${GRAFANA_HOST}
+      VIRTUAL_PORT: 3000
+      HTTPS_METHOD: noredirect
+  influxdb:
+    container_name: rentsoft_api_gateway_influxdb
+    image: influxdb:1.8
+    expose:
+      - 8086
+    environment:
+      VIRTUAL_HOST: ${INFLUXDB_HOST}
+      VIRTUAL_PORT: 8086
+      HTTPS_METHOD: noredirect
+      INFLUXDB_DB: krakend
+      INFLUXDB_USER: krakend-dev
+      INFLUXDB_USER_PASSWORD: pas5w0rd
+      INFLUXDB_ADMIN_USER: admin
+      INFLUXDB_ADMIN_PASSWORD: supersecretpassword
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+#  jaeger:
+#    image: jaegertracing/all-in-one:latest
+#    ports:
+#      - "16686:16686"
+#      - "14268:14268"
+  kraken_designer:
+    container_name: rentsoft_api_gateway_designer
+    image: devopsfaith/krakendesigner:latest
+    environment:
+      VIRTUAL_HOST: ${DESIGNER_HOST}
+      VIRTUAL_PORT: 8000
+      HTTPS_METHOD: noredirect
+  krakend:
+    container_name: rentsoft_api_gateway_krakend
+    build:
+      context: ./krakend/
+    image: krakend
+    entrypoint: /usr/bin/krakend run -d -c /etc/krakend/krakend.json
+    environment:
+      VIRTUAL_HOST: ${KRAKEND_HOST}
+      VIRTUAL_PORT: 8080
+      HTTPS_METHOD: noredirect
+    volumes:
+      - ./krakend:/etc/krakend
+      - /etc/localtime:/etc/localtime:ro
+#  jwt_revoke:
+#    build:
+#      context: ./jwt-revoker
+##    ports:
+##      - "9000:8080"
+#    depends_on:
+#      - krakend_ce
+    expose:
+      - 8080
+
+networks:
+  default:
+    external: true
+    name: nginx-proxy

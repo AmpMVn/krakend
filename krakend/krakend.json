@@ -1,0 +1,410 @@
+{
+  "$id": "https://www.krakend.io/schema/v3.json",
+"version": 3,
+  "timeout": "30000ms",
+  "name": "Rentsoft API Gateway",
+  "extra_config": {{ marshal .service.extra_config }},
+  "host": {{ marshal .service.default_hosts }},
+  "endpoints": [
+    {{ range $idx, $endpoint := .endpoint.ms_user_secure}}
+      {{ if $idx }}, {{ end }}
+        {
+          "endpoint": "{{ $endpoint.endpoint }}",
+          "input_headers": [
+            "Authorization"
+          ],
+          {{ if $endpoint.input_query_strings}}
+          "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+          {{ end }}
+          "extra_config": {
+            {{ include "auth_keycloak.tmpl"}}
+          },
+          "backend": [
+            {
+              "url_pattern": "{{ $endpoint.backend }}",
+              "host": {{ marshal $.service.ms_user_host }},
+              {{ if $endpoint.is_collection}}
+              "is_collection": true,
+              {{ end }}
+              {{ if $endpoint.is_collection}}
+              "mapping": {{ marshal $endpoint.mapping }},
+              {{ end }}
+              "extra_config": {
+                "backend/http": {
+                  "return_error_details": "MS User Backend id: {{ $idx }}"
+                }
+              }
+            }
+          ]
+        }
+    {{end}}
+    {{ range $idx, $endpoint := .endpoint.ms_user_secure}}
+      ,
+        {
+          "endpoint": "{{ $endpoint.endpoint }}",
+          "output_encoding": "no-op",
+          "method": "POST",
+          "input_headers": [
+            "Authorization",
+            "Content-type"
+          ],
+          {{ if $endpoint.input_query_strings}}
+          "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+          {{ end }}
+          "extra_config": {
+            {{ include "auth_keycloak.tmpl"}}
+          },
+          "backend": [
+            {
+              "url_pattern": "{{ $endpoint.backend }}",
+              "method": "POST",
+              "encoding": "no-op",
+              "host": {{ marshal $.service.ms_user_host }},
+              {{ if $endpoint.is_collection}}
+              "is_collection": true,
+              {{ end }}
+              {{ if $endpoint.is_collection}}
+              "mapping": {{ marshal $endpoint.mapping }},
+              {{ end }}
+              "extra_config": {
+                "backend/http": {
+                  "return_error_details": "MS User Backend id: {{ $idx }}"
+                }
+              }
+            }
+          ]
+        }
+    {{end}}
+    {{ range $idx, $endpoint := .endpoint.ms_article_secure}}
+      ,
+        {
+          "endpoint": "{{ $endpoint.endpoint }}",
+          "input_headers": [
+            "Authorization",
+            "accept-language"
+          ],
+          {{ if $endpoint.input_query_strings}}
+          "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+          {{ end }}
+          "extra_config": {
+            {{ include "auth_keycloak.tmpl"}}
+          },
+          "backend": [
+            {
+              "url_pattern": "{{ $endpoint.backend }}",
+              "host": {{ marshal $.service.ms_article_host }},
+              {{ if $endpoint.is_collection}}
+              "is_collection": true,
+              {{ end }}
+              {{ if $endpoint.is_collection}}
+              "mapping": {{ marshal $endpoint.mapping }},
+              {{ end }}
+              "extra_config": {
+                "backend/http": {
+                  "return_error_details": "MS Article Backend id: {{ $idx }}"
+                }
+              }
+            }
+          ]
+        }
+    {{end}}
+    {{ range $idx, $endpoint := .endpoint.ms_article_secure}}
+      ,
+        {
+          "endpoint": "{{ $endpoint.endpoint }}",
+          "method": "POST",
+          "input_headers": [
+            "Authorization",
+            "accept-language",
+            "Content-type"
+          ],
+          {{ if $endpoint.input_query_strings}}
+          "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+          {{ end }}
+          "extra_config": {
+            {{ include "auth_keycloak.tmpl"}}
+          },
+          "backend": [
+            {
+              "url_pattern": "{{ $endpoint.backend }}",
+              "method": "POST",
+              "host": {{ marshal $.service.ms_article_host }},
+              {{ if $endpoint.is_collection}}
+              "is_collection": true,
+              {{ end }}
+              {{ if $endpoint.is_collection}}
+              "mapping": {{ marshal $endpoint.mapping }},
+              {{ end }}
+              "extra_config": {
+                "backend/http": {
+                  "return_error_details": "MS Article Backend id: {{ $idx }}"
+                }
+              }
+            }
+          ]
+        }
+    {{end}}
+    {{ range $idx, $endpoint := .endpoint.ms_article_secure}}
+      ,
+        {
+          "endpoint": "{{ $endpoint.endpoint }}",
+          "method": "PATCH",
+          "input_headers": [
+            "Authorization",
+            "accept-language",
+            "Content-type"
+          ],
+          {{ if $endpoint.input_query_strings}}
+          "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+          {{ end }}
+          "extra_config": {
+            {{ include "auth_keycloak.tmpl"}}
+          },
+          "backend": [
+            {
+              "url_pattern": "{{ $endpoint.backend }}",
+              "method": "PATCH",
+              "host": {{ marshal $.service.ms_article_host }},
+              {{ if $endpoint.is_collection}}
+              "is_collection": true,
+              {{ end }}
+              {{ if $endpoint.is_collection}}
+              "mapping": {{ marshal $endpoint.mapping }},
+              {{ end }}
+              "extra_config": {
+                "backend/http": {
+                  "return_error_details": "MS Article Backend id: {{ $idx }}"
+                }
+              }
+            }
+          ]
+        }
+    {{end}}
+    {{ range $idx, $endpoint := .endpoint.ms_online_booking_secure}}
+      ,
+        {
+          "endpoint": "{{ $endpoint.endpoint }}",
+          "input_headers": [
+            "Authorization",
+            "accept-language"
+          ],
+          {{ if $endpoint.input_query_strings}}
+          "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+          {{ end }}
+          "extra_config": {
+            {{ include "auth_keycloak.tmpl"}}
+          },
+          "backend": [
+            {
+              "url_pattern": "{{ $endpoint.backend }}",
+              "host": {{ marshal $.service.ms_online_booking_host }},
+              {{ if $endpoint.is_collection}}
+              "is_collection": true,
+              {{ end }}
+              {{ if $endpoint.is_collection}}
+              "mapping": {{ marshal $endpoint.mapping }},
+              {{ end }}
+              "extra_config": {
+                "backend/http": {
+                  "return_error_details": "MS Online Booking Backend id: {{ $idx }}"
+                }
+              }
+            }
+          ]
+        }
+    {{end}}
+    {{ range $idx, $endpoint := .endpoint.ms_online_booking_secure}}
+      ,
+        {
+          "endpoint": "{{ $endpoint.endpoint }}",
+          "method": "POST",
+          "input_headers": [
+            "Authorization",
+            "accept-language",
+            "Content-type"
+          ],
+          {{ if $endpoint.input_query_strings}}
+          "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+          {{ end }}
+          "extra_config": {
+            {{ include "auth_keycloak.tmpl"}}
+          },
+          "backend": [
+            {
+              "url_pattern": "{{ $endpoint.backend }}",
+              "method": "POST",
+              "host": {{ marshal $.service.ms_online_booking_host }},
+              {{ if $endpoint.is_collection}}
+              "is_collection": true,
+              {{ end }}
+              {{ if $endpoint.is_collection}}
+              "mapping": {{ marshal $endpoint.mapping }},
+              {{ end }}
+              "extra_config": {
+                "backend/http": {
+                  "return_error_details": "MS Online Booking Backend id: {{ $idx }}"
+                }
+              }
+            }
+          ]
+        }
+    {{end}}
+    {{ range $idx, $endpoint := .endpoint.ms_online_booking_secure}}
+      ,
+        {
+          "endpoint": "{{ $endpoint.endpoint }}",
+          "method": "PATCH",
+          "input_headers": [
+            "Authorization",
+            "accept-language",
+            "Content-type"
+          ],
+          {{ if $endpoint.input_query_strings}}
+          "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+          {{ end }}
+          "extra_config": {
+            {{ include "auth_keycloak.tmpl"}}
+          },
+          "backend": [
+            {
+              "url_pattern": "{{ $endpoint.backend }}",
+              "method": "PATCH",
+              "host": {{ marshal $.service.ms_online_booking_host }},
+              {{ if $endpoint.is_collection}}
+              "is_collection": true,
+              {{ end }}
+              {{ if $endpoint.is_collection}}
+              "mapping": {{ marshal $endpoint.mapping }},
+              {{ end }}
+              "extra_config": {
+                "backend/http": {
+                  "return_error_details": "MS Online Booking Backend id: {{ $idx }}"
+                }
+              }
+            }
+          ]
+        }
+    {{end}}
+
+
+    {{ range $idx, $endpoint := .endpoint.ms_invoice_secure}}
+    {{ range $method := list "GET" "POST" "PATCH" "PUT" "DELETE" }}
+          ,
+            {
+              "endpoint": "{{ $endpoint.endpoint }}",
+              "method": "{{ $method }}",
+              "input_headers": [
+                "Authorization",
+                "accept-language",
+                "Content-type"
+              ],
+              {{ if $endpoint.input_query_strings}}
+              "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+              {{ end }}
+              "extra_config": {
+                {{ include "auth_keycloak.tmpl"}}
+              },
+              "output_encoding": "no-op",
+              "backend": [
+                {
+                  "encoding": "no-op",
+                  "url_pattern": "{{ $endpoint.backend }}",
+                  "host": {{ marshal $.service.ms_invoice_host }},
+                  {{ if $endpoint.is_collection}}
+                  "is_collection": true,
+                  {{ end }}
+                  {{ if $endpoint.is_collection}}
+                  "mapping": {{ marshal $endpoint.mapping }},
+                  {{ end }}
+                  "extra_config": {
+                    "backend/http": {
+                      "return_error_details": "MS Invoice Backend id: {{ $idx }}"
+                    }
+                  }
+                }
+              ]
+            }
+        {{end}}
+        {{end}}
+
+        {{ range $idx, $endpoint := .endpoint.ms_payment_secure}}
+        {{ range $method := list "GET" "POST" "PATCH" "PUT" }}
+          ,
+            {
+              "endpoint": "{{ $endpoint.endpoint }}",
+              "method": "{{ $method }}",
+              "input_headers": [
+                "Authorization",
+                "accept-language",
+                "Content-type"
+              ],
+              {{ if $endpoint.input_query_strings}}
+              "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+              {{ end }}
+              "extra_config": {
+                {{ include "auth_keycloak.tmpl"}}
+              },
+              "output_encoding": "no-op",
+              "backend": [
+                {
+                  "encoding": "no-op",
+                  "url_pattern": "{{ $endpoint.backend }}",
+                  "host": {{ marshal $.service.ms_payment_host }},
+                  {{ if $endpoint.is_collection}}
+                  "is_collection": true,
+                  {{ end }}
+                  {{ if $endpoint.is_collection}}
+                  "mapping": {{ marshal $endpoint.mapping }},
+                  {{ end }}
+                  "extra_config": {
+                    "backend/http": {
+                      "return_error_details": "MS Payment Backend id: {{ $idx }}"
+                    }
+                  }
+                }
+              ]
+            }
+        {{end}}
+        {{end}}
+
+        {{ range $idx, $endpoint := .endpoint.ms_communication_secure}}
+            {{ range $method := list "GET" "POST" "PATCH" "PUT" }}
+              ,
+                {
+                  "endpoint": "{{ $endpoint.endpoint }}",
+                  "method": "{{ $method }}",
+                  "input_headers": [
+                    "Authorization",
+                    "accept-language",
+                    "Content-type"
+                  ],
+                  {{ if $endpoint.input_query_strings}}
+                  "input_query_strings": {{ marshal $endpoint.input_query_strings }},
+                  {{ end }}
+                  "extra_config": {
+                    {{ include "auth_keycloak.tmpl"}}
+                  },
+                  "output_encoding": "no-op",
+                  "backend": [
+                    {
+                      "encoding": "no-op",
+                      "url_pattern": "{{ $endpoint.backend }}",
+                      "host": {{ marshal $.service.ms_communication_host }},
+                      {{ if $endpoint.is_collection}}
+                      "is_collection": true,
+                      {{ end }}
+                      {{ if $endpoint.is_collection}}
+                      "mapping": {{ marshal $endpoint.mapping }},
+                      {{ end }}
+                      "extra_config": {
+                        "backend/http": {
+                          "return_error_details": "MS Communication Backend id: {{ $idx }}"
+                        }
+                      }
+                    }
+                  ]
+                }
+        {{end}}
+        {{end}}
+  ]
+}

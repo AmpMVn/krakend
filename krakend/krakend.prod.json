@@ -1,0 +1,59 @@
+{
+  "$id": "https://www.krakend.io/schema/v3.json",
+"version": 3,
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "name": "Rentsoft API Gateway",
+  "extra_config": {
+    "telemetry/metrics": {
+      "collection_time": "30s",
+      "listen_address":":8090"
+    },
+    "telemetry/logging": {
+      "level":  "DEBUG",
+      "prefix": "[KRAKEND]",
+      "syslog": false,
+      "stdout": true
+    }
+  },
+  "endpoints": [
+    {
+      "endpoint": "/articles/v1/articles",
+      "input_headers": [
+        "Authorization"
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "RS256",
+          "jwk_url": "https://user.ms.rentsoft.de/auth/realms/rs-platform/protocol/openid-connect/certs",
+          "disable_jwk_security": true
+        }
+      },
+      "backend": [
+        {
+          "url_pattern": "/articles.jsonld",
+          "host": [ "https://api.article.ms.rentsoft.de" ],
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "backend_a"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "endpoint": "/splash",
+      "backend": [
+        {
+          "url_pattern": "/articles.jsonld",
+          "host": [ "https://api.article.ms.rentsoft.de" ],
+          "extra_config": {
+            "backend/http": {
+              "return_error_details": "backend_a"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,735 @@
+{
+  "ms_user_secure": [
+    {
+      "endpoint": "/client/v1/auth/admin/realms/rs-platform/clients",
+      "backend": "/auth/admin/realms/rs-platform/clients",
+      "is_collection": true,
+      "mapping": {
+        "collection": "groups"
+      }
+    },
+    {
+      "endpoint": "/client/v1/auth/admin/realms/rs-platform/users",
+      "backend": "/auth/admin/realms/rs-platform/users",
+      "is_collection": true,
+      "mapping": {
+        "collection": "users"
+      },
+      "input_query_strings": [
+        "email"
+      ]
+    },
+    {
+      "endpoint": "/client/v1/auth/admin/realms/rs-platform/groups",
+      "backend": "/auth/admin/realms/rs-platform/groups",
+      "is_collection": true,
+      "mapping": {
+        "collection": "groups"
+      }
+    },
+    {
+      "endpoint": "/client/v1/auth/admin/realms/rs-platform/groups/{groupId}",
+      "backend": "/auth/admin/realms/rs-platform/groups/{groupId}"
+    }
+  ],
+  "ms_article_secure": [
+    {
+      "endpoint": "/article/v1/articles/pricecalculation",
+      "backend": "/articles/pricecalculation.json",
+      "is_collection": true,
+      "mapping": {
+        "collection": "calculations"
+      },
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/article-groups/pricecalculation",
+      "backend": "/article-groups/pricecalculation.json",
+      "is_collection": true,
+      "mapping": {
+        "collection": "calculations"
+      },
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/sync/rentsofts",
+      "backend": "/sync/rentsofts.jsonld",
+      "input_query_strings": [
+        "remoteAction",
+        "remoteId",
+        "localeClass",
+        "localeId",
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/article-groups/{id}",
+      "backend": "/article-groups/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/article-groups",
+      "backend": "/article-groups.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/articles",
+      "backend": "/articles.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/articles/{id}",
+      "backend": "/articles/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/articles/{id}/bookings",
+      "backend": "/articles/{id}/bookings.json",
+      "is_collection": true,
+      "mapping": {
+        "collection": "results"
+      },
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/articles/accessories",
+      "backend": "/articles/accessories.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/articles/accessories/{id}",
+      "backend": "/articles/accessories/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/articles/attributes",
+      "backend": "/articles/attributes.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/articles/attributes/{id}",
+      "backend": "/articles/attributes/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/article/bookings",
+      "backend": "/article/bookings.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/article/bookings/{id}",
+      "backend": "/article/bookings/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/articles/images",
+      "backend": "/articles/images.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/articles/images/{id}",
+      "backend": "/articles/images/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/articles/stocks",
+      "backend": "/articles/stocks.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/articles/stocks/{id}",
+      "backend": "/articles/stocks/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/settings/storages",
+      "backend": "/settings/storages.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/settings/storages/{id}",
+      "backend": "/settings/storages/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/clients",
+      "backend": "/clients.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}",
+      "backend": "/clients/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}/attribute-sets",
+      "backend": "/clients/{id}/attribute-sets.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}/categories",
+      "backend": "/clients/{id}/categories.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}/filters",
+      "backend": "/clients/{id}/filters.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}/locations",
+      "backend": "/clients/{id}/locations.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}/price-discounts",
+      "backend": "/clients/{id}/price-discounts.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}/price-rates",
+      "backend": "/clients/{id}/price-rates.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}/storages",
+      "backend": "/clients/{id}/storages.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/settings/attribute-set/groups",
+      "backend": "/settings/attribute-set/groups.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/settings/attribute-set/groups/{id}",
+      "backend": "/settings/attribute-set/groups/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/settings/categories",
+      "backend": "/settings/categories.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order",
+        "clientId",
+        "lvl",
+        "enableOnlineBooking",
+        "parent"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/settings/categories/{id}",
+      "backend": "/settings/categories/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/filters/groups",
+      "backend": "/filters/groups.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/filters/groups/{id}",
+      "backend": "/filters/groups/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/filters/groups/{id}/filters",
+      "backend": "/filters/groups/{id}/filters.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/clients/{id}/filters/{filters}/filters",
+      "backend": "/clients/{id}/filters/{filters}/filters.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/filters",
+      "backend": "/filters.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/filters/{id}",
+      "backend": "/filters/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/settings/locations",
+      "backend": "/settings/locations.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/settings/locations/{id}",
+      "backend": "/settings/locations/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/prices/discounts",
+      "backend": "/prices/discounts.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/prices/discounts/{id}",
+      "backend": "/prices/discounts/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/price/rates/groups",
+      "backend": "/price/rates/groups.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/prices/rates/groups/{id}",
+      "backend": "/prices/rates/groups/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/prices/flats",
+      "backend": "/prices/flats.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/prices/flats/{id}",
+      "backend": "/prices/flats/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/prices/rates/groups/entries",
+      "backend": "/prices/rates/groups/entries.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/prices/rates/groups/entries/{id}",
+      "backend": "/prices/rates/groups/entries/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/prices/sells",
+      "backend": "/prices/sells.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/prices/sells/{id}",
+      "backend": "/prices/sells/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/settings/attribute-set/groups/entries",
+      "backend": "/settings/attribute-set/groups/entries.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/article/v1/settings/attribute-set/groups/entries/{id}",
+      "backend": "/settings/attribute-set/groups/entries/{id}.jsonld"
+    },
+    {
+      "endpoint": "/article/v1/get-categories",
+      "backend": "/get-categories.json",
+      "is_collection": true,
+      "input_query_strings": [
+        "clientId",
+        "enableOnlineBooking"
+      ]
+    }
+  ],
+  "ms_online_booking_secure": [
+    {
+      "endpoint": "/online-booking/v1/online-bookings",
+      "backend": "/online-bookings.jsonld",
+      "input_query_strings": [
+        "uri",
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/online-bookings/{id}",
+      "backend": "/online-bookings/{id}.jsonld"
+    },
+    {
+      "endpoint": "/online-booking/v1/updated-rentsofts",
+      "backend": "/updated-rentsofts.jsonld",
+      "input_query_strings": [
+        "remoteAction",
+        "remoteId",
+        "localeClass",
+        "localeId",
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/updated-microservices",
+      "backend": "/updated-microservices.jsonld",
+      "input_query_strings": [
+        "remoteAction",
+        "remoteId",
+        "localeClass",
+        "localeId",
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/filters",
+      "backend": "/filters.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/filters/{id}",
+      "backend": "/filters/{id}.jsonld"
+    },
+    {
+      "endpoint": "/online-booking/v1/processes",
+      "backend": "/processes.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order",
+        "uniqueHash",
+        "onlineBooking",
+        "searchQuery",
+        "status"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/processes/{id}",
+      "backend": "/processes/{id}.jsonld"
+    },
+    {
+      "endpoint": "/online-booking/v1/settings/vouchercodes",
+      "backend": "/settings/vouchercodes.jsonld",
+      "input_query_strings": [
+        "itemsPerPage",
+        "page",
+        "order"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/settings/vouchercodes/{id}",
+      "backend": "/settings/vouchercodes/{id}.jsonld"
+    },
+    {
+      "endpoint": "/online-booking/v1/online-bookings/{id}/additional-field-group",
+      "backend": "/online-bookings/{id}/additional-field-group.jsonld",
+      "input_query_strings": [
+        "onlineBooking"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/settings/appearance/checkouts",
+      "backend": "/settings/appearance/checkouts.jsonld",
+      "input_query_strings": [
+        "onlineBooking"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/settings/appearance/dynamic-texts",
+      "backend": "/settings/appearance/dynamic-texts.jsonld",
+      "input_query_strings": [
+        "onlineBooking"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/settings/opentimes",
+      "backend": "/settings/opentimes.jsonld",
+      "input_query_strings": [
+        "onlineBooking"
+      ]
+    },
+    {
+      "endpoint": "/online-booking/v1/settings/blockeddays",
+      "backend": "/settings/blockeddays.jsonld",
+      "input_query_strings": [
+        "onlineBooking"
+      ]
+    }
+  ],
+  "ms_invoice_secure": [
+    {
+      "endpoint": "/invoice/v1/invoices",
+      "backend": "/invoices.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/invoices/{id}",
+      "backend": "/invoices/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/invoices/{id}/items",
+      "backend": "/invoices/{id}/items.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/invoices/{id}/regenerate-pdf",
+      "backend": "/invoices/{id}/regenerate-pdf.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/invoices/{id}/reminders",
+      "backend": "/invoices/{id}/reminders.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/items",
+      "backend": "/items.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/items/{id}",
+      "backend": "/items/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/letterheads",
+      "backend": "/letterheads.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/letterheads/{id}",
+      "backend": "/letterheads/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/settings",
+      "backend": "/settings.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/settings/{id}",
+      "backend": "/settings/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/reminders",
+      "backend": "/reminders.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/reminders/{id}",
+      "backend": "/reminders/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/invoice/v1/reminders/{id}/send-email",
+      "backend": "/reminders/{id}/send-email.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    }
+  ],
+  "ms_payment_secure": [
+    {
+      "endpoint": "/payment/v1/orders",
+      "backend": "/orders.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/payment/v1/orders/{id}",
+      "backend": "/orders/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/payment/v1/settings",
+      "backend": "/settings.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/payment/v1/settings/{id}",
+      "backend": "/settings/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/payment/v1/concardis/order/new",
+      "backend": "/concardis/order/new",
+      "input_query_strings": [
+        "*"
+      ]
+    }
+  ],
+  "ms_communication_secure": [
+    {
+      "endpoint": "/communication/v1/mails",
+      "backend": "/mails.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/communication/v1/mails/{id}",
+      "backend": "/mails/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/communication/v1/attachments",
+      "backend": "/attachments.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/communication/v1/attachments/{id}",
+      "backend": "/attachments/{id}.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/communication/v1/settings",
+      "backend": "/settings.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/communication/v1/settings/{id}",
+      "backend": "/settings/{id}",
+      "input_query_strings": [
+        "*"
+      ]
+    },
+    {
+      "endpoint": "/communication/v1/mails/{id}/attachments",
+      "backend": "/mails/{id}/attachments.jsonld",
+      "input_query_strings": [
+        "*"
+      ]
+    }
+  ]
+}
